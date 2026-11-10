@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OBSIDIAN</title>
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #26143e, #090710 65%);
+  color: white;
+  font-family: Arial, sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+main { width: 90%; max-width: 650px; }
+
+h1 {
+  font-size: 58px;
+  letter-spacing: 12px;
+  color: #c69aff;
+  text-shadow: 0 0 25px #8d42ff;
+}
+
+p { color: #aaa; }
+
+form {
+  display: flex;
+  background: #171321;
+  border: 1px solid #8152b9;
+  border-radius: 30px;
+  padding: 8px;
+  margin-top: 35px;
+  box-shadow: 0 0 25px #632ca044;
+}
+
+input {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: 0;
+  outline: none;
+  color: white;
+  padding: 13px;
+  font-size: 16px;
+}
+
+button {
+  background: #9556dc;
+  color: white;
+  border: 0;
+  border-radius: 25px;
+  padding: 12px 20px;
+  cursor: pointer;
+}
+
+.links {
+  margin-top: 35px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+a { color: #c69aff; text-decoration: none; }
+a:hover { color: white; }
+</style>
+</head>
+<body>
+<main>
+  <h1>OBSIDIAN</h1>
+  <p>Your space. Your web.</p>
+
+  <form id="search">
+    <input id="query" placeholder="Search the web..." required>
+    <button type="submit">Search</button>
+  </form>
+
+  <div class="links">
+    <a href="https://google.com">Google</a>
+    <a href="https://youtube.com">YouTube</a>
+    <a href="https://github.com">GitHub</a>
+  </div>
+</main>
+
+<script>
+document.getElementById("search").addEventListener("submit", function(e) {
+  e.preventDefault();
+  const query = document.getElementById("query").value.trim();
+  if (!query) return;
+
+  const isUrl = /^https?:\/\//i.test(query);
+  const destination = isUrl
+    ? query
+    : "https://www.google.com/search?q=" + encodeURIComponent(query);
+
+  window.location.href = destination;
+});
+</script>
+</body>
+</html>
